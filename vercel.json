@@ -1,0 +1,23 @@
+{
+    "version": 2,
+    "builds": [
+        {
+            "src": "api/**/*.js",
+            "use": "@vercel/node"
+        }
+    ],
+    "routes": [
+        {
+            "src": "/api/(.*)",
+            "dest": "/api/$1"
+        }
+    ],
+    "env": {
+        "ALIPAY_APP_ID": "@alipay-app-id",
+        "ALIPAY_PRIVATE_KEY": "@alipay-private-key",
+        "ALIPAY_PUBLIC_KEY": "@alipay-public-key",
+        "SUPABASE_URL": "@supabase-url",
+        "SUPABASE_ANON_KEY": "@supabase-anon-key",
+        "ADMIN_PASSWORD": "@admin-password"
+    }
+}

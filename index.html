@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="成品账号自助购买平台 - 支付宝自动发货">
+  <title>成品账号 - 自动发货平台</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <!-- 导航栏 -->
+  <nav class="navbar">
+    <div class="container">
+      <div class="logo">🚀 成品账号</div>
+      <ul class="nav-links">
+        <li><a href="index.html">购买</a></li>
+        <li><a href="order.html">查询订单</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- 主区域 -->
+  <main class="hero">
+    <div class="container">
+      <h1>成品账号</h1>
+      <p>即买即用，自动发货，安全可靠</p>
+
+      <!-- 商品卡片 -->
+      <div class="card product-card">
+        <h2>💎 成品账号</h2>
+        <div class="price">¥45<span>/个</span></div>
+
+        <ul class="features">
+          <li>支付后自动发货</li>
+          <li>独立账号，独一无二</li>
+          <li>支持支付宝扫码付款</li>
+          <li>订单可查询</li>
+        </ul>
+
+        <!-- 购买表单 -->
+        <div id="orderForm" style="margin-top: 32px;">
+          <div class="form-group">
+            <label for="contact">联系方式 *</label>
+            <input type="text" id="contact" placeholder="手机号 / 微信号 / QQ号" required>
+          </div>
+
+          <button type="button" class="btn btn-primary btn-block" id="buyBtn" onclick="createOrder()">
+            立即购买
+          </button>
+        </div>
+
+        <!-- 成功提示 -->
+        <div id="orderSuccess" style="display: none; text-align: center; margin-top: 32px;">
+          <h2>🎉 发货成功！</h2>
+          <p style="color: var(--text-secondary); margin: 16px 0;">
+            订单号：<span id="successOrderNo" style="color: var(--accent-blue);"></span>
+          </p>
+          <div class="download-box">
+            <h3 style="color: var(--accent-green); margin-bottom: 16px;">您的账号信息</h3>
+            <div class="download-content" id="successContent" style="text-align: left;"></div>
+            <button class="btn btn-success" onclick="copyContent()" style="margin-top: 16px;">
+              📋 复制内容
+            </button>
+          </div>
+          <button class="btn btn-outline" style="margin-top: 24px;" onclick="location.reload()">继续购买</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- 支付二维码弹窗 -->
+  <div class="modal-overlay" id="paymentModal">
+    <div class="modal">
+      <div class="modal-header">
+        <h2>📱 扫码支付</h2>
+        <button class="modal-close" onclick="closePaymentModal()">&times;</button>
+      </div>
+
+      <div style="text-align: center;">
+        <div class="qr-container" style="justify-content: center; margin: 24px 0;">
+          <img id="qrImage" src="" alt="支付二维码" style="width: 240px; height: 240px; border-radius: 12px;">
+        </div>
+
+        <p style="color: var(--text-secondary); margin-bottom: 8px;">
+          订单号：<span id="displayOrderNo" style="color: var(--accent-blue);"></span>
+        </p>
+        <p style="font-size: 1.5rem; font-weight: 700; color: var(--accent-orange); margin-bottom: 24px;">
+          <span id="displayAmount"></span>
+        </p>
+
+        <div class="payment-note">
+          ⏱️ 请在30分钟内完成支付<br>
+          支付成功后将自动发货
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 页脚 -->
+  <footer class="footer">
+    <p>© 2026 成品账号自助平台 | 如有问题请联系店主</p>
+  </footer>
+
+  <!-- Toast 提示 -->
+  <div class="toast" id="toast">
+    <span id="toastMessage"></span>
+  </div>
+
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+
+</html>
